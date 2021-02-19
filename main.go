@@ -80,20 +80,5 @@ func punch(ids ...string) {
 }
 
 func main() {
-
-	c := cron.New(cron.WithSeconds())
-
-	_, err := c.AddFunc("30 0 6 * * *", func() {
-		punch(os.Args[1:]...)
-	})
-
-	if err != nil {
-		panic(err)
-	}
-
-	c.Start()
-
-	fmt.Println(c.Entries()[1].Next.String())
-
-	time.Sleep(100 * 365 * 24 * time.Hour)
+	punch(os.Args[1:]...)
 }
