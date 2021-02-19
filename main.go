@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/robfig/cron/v3"
 )
 
 // {"code":0,"data":{"ticket":"0008c456-921e-468c-8153-037926091146"}}
