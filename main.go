@@ -64,10 +64,10 @@ func punch(ids ...string) {
 			Post("https://jk.zjjxedu.gov.cn/health/mobiapi/savePunchclock")
 
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("签到失败", err)
 		}
 
-		fmt.Println("自动成功...")
+		fmt.Println(id, "签到成功...")
 
 		if rep.StatusCode() != 200 {
 			time.Sleep(1 * time.Minute)
