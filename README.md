@@ -1,6 +1,8 @@
 # zjjxedu
 
-1. Fork
+嘉兴教育健康云白嫖打卡
+
+1. [Fork] 本项目
 2. 转到 Settings -> Secrets
 3. 点击 [New repository secrets]
 4. Name: IDCARD Value: 身份证
