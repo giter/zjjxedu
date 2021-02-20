@@ -17,7 +17,7 @@ type Login struct {
 	} `json:"data"`
 }
 
-var r = resty.New()
+var r = resty.New().SetDebug(true)
 
 func punch(ids ...string) {
 
