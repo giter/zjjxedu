@@ -65,15 +65,10 @@ func punch(ids ...string) {
 
 		if err != nil {
 			fmt.Println("签到失败", err)
+			continue
 		}
 
 		fmt.Println(id, "签到成功...")
-
-		if rep.StatusCode() != 200 {
-			time.Sleep(1 * time.Minute)
-		} else {
-			return
-		}
 	}
 }
 
