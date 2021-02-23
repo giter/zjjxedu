@@ -16,7 +16,7 @@ type Login struct {
 	} `json:"data"`
 }
 
-var r = resty.New().SetDebug(true)
+var r = resty.New()
 
 func punch(ids ...string) {
 
@@ -66,8 +66,20 @@ func punch(ids ...string) {
 			fmt.Println("签到失败", err)
 			continue
 		}
+		
+		err = json.Unmarshal([]byte(rep.Body()), &rlogin)
 
-		fmt.Println(id, "签到成功...")
+		if err != nil {
+			fmt.Println("登录失败:", err.Error())
+			continue
+		}
+		
+		if rlogin.Code != 0 {
+			fmt.Println("签到失败:", rlogin.Msg)
+			continue
+		}else {
+			fmt.Println(id, "签到成功...")
+		}
 	}
 }
 
