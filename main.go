@@ -51,7 +51,7 @@ func punch(ids ...string) {
 			continue
 		}
 
-		fmt.Println("自动签到...")
+		fmt.Println(id, "自动签到...")
 
 		rep, err = r.NewRequest().
 			SetHeader("User-Agent", "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36 MicroMessenger/7.0.9.501 NetType/WIFI MiniProgramEnv/Windows WindowsWechat").
@@ -63,14 +63,14 @@ func punch(ids ...string) {
 			Post("https://jk.zjjxedu.gov.cn/health/mobiapi/savePunchclock")
 
 		if err != nil {
-			fmt.Println("签到失败", err)
+			fmt.Println("签到失败:", err)
 			continue
 		}
 		
 		err = json.Unmarshal([]byte(rep.Body()), &rlogin)
 
 		if err != nil {
-			fmt.Println("登录失败:", err.Error())
+			fmt.Println("签到失败:", err.Error())
 			continue
 		}
 		
@@ -78,7 +78,7 @@ func punch(ids ...string) {
 			fmt.Println("签到失败:", rlogin.Msg)
 			continue
 		}else {
-			fmt.Println(id, "签到成功...")
+			fmt.Println(id, "签到成功!")
 		}
 	}
 }
